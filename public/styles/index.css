@@ -1,0 +1,364 @@
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Spacing scale */
+:root {
+  --space-1: .5rem;
+  --space-2: .75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --radius: 14px;
+  --shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 24px rgba(0,0,0,.05);
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  color: var(--text);
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* === Accent Square Bullets (match about.css) === */
+main ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: var(--space-2);
+}
+
+main ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-top: 0.4rem;
+}
+
+main ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px; /* slight roundness */
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
+/* --- Header --- */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+#header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.header-left a {
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1;
+  color: var(--text);
+}
+.header-left a:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+.header-right {
+  display: flex;
+  gap: var(--space-3);
+}
+.header-right a {
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  transition: background .15s ease;
+}
+.header-right a:hover {
+  background: var(--surface-alt);
+}
+
+/* --- Hero --- */
+.hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding: clamp(2rem, 6vw, 4rem) 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.hero-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  background: var(--surface);
+  /* spacer gap + accent ring + soft depth */
+  box-shadow:
+    0 0 0 6px var(--bg),
+    0 0 0 8px var(--accent),
+    0 8px 24px rgba(0,0,0,.06);
+  /* if you had filter: drop-shadow(...) before, remove it to avoid double shadows */
+  filter: none;
+}
+.hero-right h1 {
+  margin-top: 0;
+}
+.hero-right p {
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+/* Hero actions as buttons (minimal) */
+.hero-right p a {
+  display: inline-block;
+  margin-right: var(--space-2);
+  margin-top: var(--space-3);
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform .06s ease, background .15s ease, border-color .15s ease;
+}
+.hero-right p a:first-child {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.hero-right p a:hover {
+  transform: translateY(-1px);
+  background: var(--surface-alt);
+}
+.hero-right p a:first-child:hover {
+  background: #b70017; /* darker red on hover for contrast */
+  border-color: #b70017;
+}
+
+/* --- More Information --- */
+.more-information {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem calc( clamp(2rem, 6vw, 4rem) );
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: var(--space-5);
+}
+.more-information-left h2 {
+  margin-top: 0;
+}
+
+.more-information-left p {
+  margin-top: var(--space-3);
+  font-weight: 500;
+  color: var(--text);
+}
+.more-information {
+  align-items: center; /* vertically center both columns */
+}
+/* If you want ONLY the left column centered, also add: */
+.more-information-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+}
+/* Calendar iframe */
+.more-information-right iframe {
+  width: 100%;
+  min-height: 480px;
+  border: none; /* avoid double border */
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow:
+    0 0 0 6px var(--bg),
+    0 0 0 8px var(--accent),
+    var(--shadow);
+}
+
+/* --- Looking Ahead --- */
+.achievements-and-aspirations {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1rem clamp(2rem, 6vw, 4rem);
+  text-align: left;
+}
+.achievements-and-aspirations h2 {
+  margin-top: 0;
+}
+.achievements-and-aspirations p {
+  margin-top: var(--space-3);
+}
+
+/* --- Footer --- */
+#footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  margin-top: clamp(2rem, 6vw, 4rem);
+}
+#footer-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+#footer h2 {
+  font-size: 18px;
+  margin-top: 0;
+  position: relative;
+  padding-left: 0.6rem;
+}
+
+#footer h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 4px;
+  height: 1.1em;
+  background: var(--accent);
+  border-radius: 2px;
+}
+#footer p {
+  margin-top: var(--space-2);
+}
+#footer a {
+  display: inline-block;
+  margin-top: .5rem;
+}
+#footer .contact a {
+  margin-top: var(--space-3);
+  padding: .6rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
+}
+#footer .socials a,
+#footer .learn-more a {
+  display: block;
+  margin-top: .6rem;
+}
+/* --- Footer contact: hover “box” like other links --- */
+#footer .contact a {
+  transition: background .15s ease, border-color .15s ease, transform .06s ease;
+}
+#footer .contact a:hover {
+  background: var(--surface);      /* subtle box on hover */
+  border-color: var(--accent);     /* hint of accent */
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+#credits {
+  border-top: 1px solid var(--border);
+  padding: .9rem 1rem;
+  text-align: center;
+  color: var(--text-soft);
+}
+#credits a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#credits a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* --- Cards (optional utility if you add sections later) --- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+}
+
+/* --- Media Queries --- */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .hero-left {
+    order: -1;
+    max-width: 220px;
+  }
+  .hero-left { 
+    justify-self: center; /* centers the left grid item only */
+  }
+  .hero-left img {
+    margin-inline: auto;   /* belt-and-suspenders centering */
+  }
+  .hero {
+    justify-items: start;
+  }
+  .more-information {
+    grid-template-columns: 1fr;
+  }
+  #footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}
+@media (max-width: 640px) {
+  #header nav {
+    height: 56px;
+  }
+  .header-right {
+    gap: .5rem;
+  }
+  .hero-right p a {
+    width: 100%;
+    text-align: center;
+  }
+  #footer-content {
+    grid-template-columns: 1fr;
+  }
+  .more-information-right iframe {
+    min-height: 380px;
+  }
+}
+
+/* --- Motion preference --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-right p a {
+    transition: none;
+  }
+}

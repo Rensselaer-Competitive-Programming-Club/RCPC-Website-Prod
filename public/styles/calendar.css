@@ -1,0 +1,212 @@
+/* ===== COPIED FROM index.css: Header ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Spacing scale */
+:root {
+  --space-1: .5rem;
+  --space-2: .75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --radius: 14px;
+  --shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 24px rgba(0,0,0,.05);
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  color: var(--text);
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Header --- */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+#header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 1rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.header-left a {
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1;
+  color: var(--text);
+}
+.header-left a:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+.header-right {
+  display: flex;
+  gap: var(--space-3);
+}
+.header-right a {
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  transition: background .15s ease;
+}
+.header-right a:hover {
+  background: var(--surface-alt);
+}
+
+@media (max-width: 640px) {
+  #header nav {
+    height: 56px;
+  }
+  .header-right {
+    gap: .5rem;
+  }
+}
+
+/* ===== COPIED FROM index.css: Footer ===== */
+/* --- Footer --- */
+#footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  margin-top: clamp(2rem, 6vw, 4rem);
+}
+#footer-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+#footer h2 {
+  font-size: 18px;
+  margin-top: 0;
+  position: relative;
+  padding-left: 0.6rem;
+}
+
+#footer h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 4px;
+  height: 1.1em;
+  background: var(--accent);
+  border-radius: 2px;
+}
+#footer p {
+  margin-top: var(--space-2);
+}
+#footer a {
+  display: inline-block;
+  margin-top: .5rem;
+}
+#footer .contact a {
+  margin-top: var(--space-3);
+  padding: .6rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
+}
+#footer .socials a,
+#footer .learn-more a {
+  display: block;
+  margin-top: .6rem;
+}
+/* --- Footer contact: hover “box” like other links --- */
+#footer .contact a {
+  transition: background .15s ease, border-color .15s ease, transform .06s ease;
+}
+#footer .contact a:hover {
+  background: var(--surface);      /* subtle box on hover */
+  border-color: var(--accent);     /* hint of accent */
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+#credits {
+  border-top: 1px solid var(--border);
+  padding: .9rem 1rem;
+  text-align: center;
+  color: var(--text-soft);
+}
+#credits a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#credits a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  #footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}
+@media (max-width: 640px) {
+  #footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== PAGE: Calendar ===== */
+html { scroll-behavior: smooth; }
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 1rem;
+}
+
+main > .page-title {
+  margin-bottom: var(--space-4);
+}
+
+/* Framed calendar embed */
+main iframe {
+  width: 100%;
+  min-height: 720px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow:
+    0 0 0 6px var(--bg),
+    0 0 0 8px var(--accent),
+    var(--shadow);
+}
+
+@media (max-width: 640px) {
+  main iframe { min-height: 520px; }
+}
